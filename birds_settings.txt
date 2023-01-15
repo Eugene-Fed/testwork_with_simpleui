@@ -1,0 +1,114 @@
+{
+  "onlineUser": "usr",
+  "onlineCode": "12",
+  "onlinePass": "",
+  "backendUser": "user1050055",
+  "offlineMode": true,
+  "beep": true,
+  "torch": true,
+  "oDataURL": "",
+  "gps": false,
+  "timer": "1",
+  "connection_limit": "5",
+  "hardwarescan": false,
+  "configuration": "<?xml version="1.0" encoding="UTF-8" ?>
+    <ClientConfiguration>
+        <ConfigurationName>Птицы</ConfigurationName>
+        <ConfigurationDescription>Разработка новой конфигурации SimpleUI</ConfigurationDescription>
+        <ConfigurationVersion>0.0.1</ConfigurationVersion>
+        <Processes>
+            <type>Process</type>
+            <ProcessName>Список птиц</ProcessName>
+            <PlanFactHeader>Спиок</PlanFactHeader>
+            <DefineOnBackPressed>false</DefineOnBackPressed>
+            <hidden>false</hidden>
+            <login_screen>false</login_screen>
+            <SC>false</SC>
+            <Operations>
+                <type>Operation</type>
+                <Name>Список птиц</Name>
+                <Timer>false</Timer>
+                <hideToolBarScreen>false</hideToolBarScreen>
+                <noScroll>false</noScroll>
+                <handleKeyUp>false</handleKeyUp>
+                <noConfirmation>false</noConfirmation>
+                <hideBottomBarScreen>false</hideBottomBarScreen>
+                <onlineOnStart>false</onlineOnStart>
+                <send_when_opened>false</send_when_opened>
+                <onlineOnInput>false</onlineOnInput>
+                <DefOnlineOnCreate></DefOnlineOnCreate>
+                <DefOnlineOnInput></DefOnlineOnInput>
+                <DefOnCreate></DefOnCreate>
+                <DefOnInput></DefOnInput>
+                <Elements>
+                    <Value></Value>
+                    <Variable></Variable>
+                    <type>LinearLayout</type>
+                    <weight>0</weight>
+                    <height>match_parent</height>
+                    <width>match_parent</width>
+                    <orientation>vertical</orientation>
+                    <Elements>
+                        <type>TextView</type>
+                        <height>match_parent</height>
+                        <width>match_parent</width>
+                        <weight>0</weight>
+                        <Value>Переменная 'a'</Value>
+                        <Variable></Variable>
+                    </Elements>
+                    <Elements>
+                        <type>EditTextNumeric</type>
+                        <height>match_parent</height>
+                        <width>match_parent</width>
+                        <weight>0</weight>
+                        <Value></Value>
+                        <Variable>a</Variable>
+                    </Elements>
+                    <Elements>
+                        <type>TextView</type>
+                        <height>match_parent</height>
+                        <width>match_parent</width>
+                        <weight>0</weight>
+                        <Value>Переменная 'b'</Value>
+                        <Variable></Variable>
+                    </Elements>
+                    <Elements>
+                        <type>EditTextNumeric</type>
+                        <height>match_parent</height>
+                        <width>match_parent</width>
+                        <weight>0</weight>
+                        <Value></Value>
+                        <Variable>b</Variable>
+                    </Elements>
+                    <Elements>
+                        <type>Button</type>
+                        <height>match_parent</height>
+                        <width>match_parent</width>
+                        <weight>0</weight>
+                        <Value></Value>
+                        <Variable>btn_res</Variable>
+                    </Elements>
+                </Elements>
+            </Operations>
+        </Processes>
+        <Processes>
+            <ProcessName>Карточка птицы</ProcessName>
+            <type>Process</type>
+            <PlanFactHeader>Карточка</PlanFactHeader>
+        </Processes>
+        <Processes>
+            <ProcessName>Создание новой птицы</ProcessName>
+            <type>Process</type>
+            <PlanFactHeader>Создать</PlanFactHeader>
+        </Processes>
+        <ConfigurationSettings>
+            <uid>2344bdb3b1c34d6abab28e0f8af1ccbe</uid>
+        </ConfigurationSettings>
+        <ConfigurationTags></ConfigurationTags>
+    </ClientConfiguration>",
+  "startProcess": "Пополнение торговой точки",
+  "data": {
+    "order": "Заказ № 1 (тест)"
+  }
+
+}

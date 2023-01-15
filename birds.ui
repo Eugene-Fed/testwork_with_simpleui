@@ -1,0 +1,389 @@
+{
+    "ClientConfiguration": {
+        "ConfigurationName": "Птицы",
+        "ConfigurationDescription": "Разработка новой конфигурации SimpleUI",
+        "ConfigurationVersion": "0.0.1",
+        "Processes": [
+            {
+                "type": "Process",
+                "ProcessName": "Птицы",
+                "PlanFactHeader": "Создать",
+                "DefineOnBackPressed": false,
+                "hidden": false,
+                "login_screen": false,
+                "SC": false,
+                "Operations": [
+                    {
+                        "type": "Operation",
+                        "Name": "Список птиц",
+                        "Timer": false,
+                        "hideToolBarScreen": false,
+                        "noScroll": false,
+                        "handleKeyUp": false,
+                        "noConfirmation": false,
+                        "hideBottomBarScreen": false,
+                        "onlineOnStart": false,
+                        "send_when_opened": true,
+                        "onlineOnInput": false,
+                        "DefOnlineOnCreate": "",
+                        "DefOnlineOnInput": "",
+                        "DefOnCreate": "on_create",
+                        "DefOnInput": "on_input",
+                        "Elements": [
+                            {
+                                "Value": "",
+                                "Variable": "screen",
+                                "type": "LinearLayout",
+                                "weight": "0",
+                                "height": "match_parent",
+                                "width": "match_parent",
+                                "orientation": "vertical",
+                                "Elements": [
+                                    {
+                                        "type": "TextView",
+                                        "height": "match_parent",
+                                        "width": "match_parent",
+                                        "weight": 0,
+                                        "Value": "@cards",
+                                        "Variable": ""
+                                    }
+                                ],
+                                "BackgroundColor": "",
+                                "StrokeWidth": "",
+                                "Padding": ""
+                            }
+                        ],
+                        "onlineOnAfterStart": false
+                    },
+                    {
+                        "Name": "Карточка птицы",
+                        "type": "Operation",
+                        "Elements": [
+                            {
+                                "Value": "",
+                                "Variable": "",
+                                "type": "LinearLayout",
+                                "weight": "0",
+                                "height": "match_parent",
+                                "width": "match_parent",
+                                "orientation": "vertical",
+                                "Elements": [
+                                    {
+                                        "type": "Picture",
+                                        "height": "wrap_content",
+                                        "width": "wrap_content",
+                                        "weight": "0",
+                                        "Value": "",
+                                        "Variable": ""
+                                    },
+                                    {
+                                        "type": "TextView",
+                                        "height": "match_parent",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "Имя птицы",
+                                        "Variable": ""
+                                    }
+                                ],
+                                "BackgroundColor": "",
+                                "StrokeWidth": "",
+                                "Padding": ""
+                            }
+                        ],
+                        "Timer": false,
+                        "hideToolBarScreen": false,
+                        "noScroll": false,
+                        "handleKeyUp": false,
+                        "hideBottomBarScreen": false,
+                        "onlineOnStart": false,
+                        "onlineOnAfterStart": false,
+                        "onlineOnInput": false
+                    },
+                    {
+                        "Name": "Создание новой птицы",
+                        "type": "Operation",
+                        "Elements": [
+                            {
+                                "Value": "",
+                                "Variable": "",
+                                "type": "LinearLayout",
+                                "weight": "0",
+                                "height": "match_parent",
+                                "width": "match_parent",
+                                "orientation": "vertical",
+                                "Elements": [],
+                                "BackgroundColor": "",
+                                "StrokeWidth": "",
+                                "Padding": ""
+                            }
+                        ],
+                        "Timer": false,
+                        "hideToolBarScreen": false,
+                        "noScroll": false,
+                        "handleKeyUp": false,
+                        "hideBottomBarScreen": false,
+                        "onlineOnStart": false,
+                        "onlineOnAfterStart": false,
+                        "onlineOnInput": false
+                    }
+                ]
+            },
+            {
+                "ProcessName": "Птицы, которых я видел",
+                "type": "Process",
+                "Operations": [
+                    {
+                        "Name": "Счетчик просмотров",
+                        "type": "Operation",
+                        "Elements": [
+                            {
+                                "Value": "",
+                                "Variable": "",
+                                "type": "LinearLayout",
+                                "weight": "0",
+                                "height": "match_parent",
+                                "width": "match_parent",
+                                "orientation": "vertical",
+                                "Elements": [
+                                    {
+                                        "type": "Button",
+                                        "height": "match_parent",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "+",
+                                        "Variable": ""
+                                    },
+                                    {
+                                        "type": "TextView",
+                                        "height": "wrap_content",
+                                        "width": "wrap_content",
+                                        "weight": "0",
+                                        "Value": "Дата/Время",
+                                        "Variable": ""
+                                    },
+                                    {
+                                        "type": "TextView",
+                                        "height": "wrap_content",
+                                        "width": "wrap_content",
+                                        "weight": "0",
+                                        "Value": "Имя птицы",
+                                        "Variable": ""
+                                    },
+                                    {
+                                        "type": "Picture",
+                                        "height": "wrap_content",
+                                        "width": "wrap_content",
+                                        "weight": "0",
+                                        "Value": "",
+                                        "Variable": ""
+                                    },
+                                    {
+                                        "type": "TextView",
+                                        "height": "wrap_content",
+                                        "width": "wrap_content",
+                                        "weight": "0",
+                                        "Value": "Просмотры",
+                                        "Variable": ""
+                                    }
+                                ],
+                                "BackgroundColor": "",
+                                "StrokeWidth": "",
+                                "Padding": ""
+                            }
+                        ],
+                        "Timer": false,
+                        "hideToolBarScreen": false,
+                        "noScroll": false,
+                        "handleKeyUp": false,
+                        "hideBottomBarScreen": false,
+                        "onlineOnStart": false,
+                        "onlineOnAfterStart": false,
+                        "onlineOnInput": false
+                    }
+                ]
+            },
+            {
+                "type": "Process",
+                "ProcessName": "Птицы - шаблон таблицы",
+                "PlanFactHeader": "Создать",
+                "DefineOnBackPressed": false,
+                "hidden": true,
+                "login_screen": false,
+                "SC": false,
+                "Operations": [
+                    {
+                        "type": "Operation",
+                        "Name": "Список птиц",
+                        "Timer": false,
+                        "hideToolBarScreen": false,
+                        "noScroll": false,
+                        "handleKeyUp": false,
+                        "noConfirmation": false,
+                        "hideBottomBarScreen": false,
+                        "onlineOnStart": false,
+                        "send_when_opened": true,
+                        "onlineOnInput": false,
+                        "DefOnlineOnCreate": "",
+                        "DefOnlineOnInput": "",
+                        "DefOnCreate": "on_create",
+                        "DefOnInput": "on_input",
+                        "Elements": [
+                            {
+                                "Value": "",
+                                "Variable": "screen",
+                                "type": "LinearLayout",
+                                "weight": "0",
+                                "height": "match_parent",
+                                "width": "match_parent",
+                                "orientation": "vertical",
+                                "Elements": [
+                                    {
+                                        "type": "LinearLayout",
+                                        "height": "match_parent",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "",
+                                        "Variable": "element",
+                                        "orientation": "horizontal",
+                                        "Elements": [
+                                            {
+                                                "type": "Picture",
+                                                "height": "match_parent",
+                                                "width": "match_parent",
+                                                "weight": "1",
+                                                "Value": "@bird_photo",
+                                                "Variable": "bird_photo"
+                                            },
+                                            {
+                                                "type": "LinearLayout",
+                                                "height": "match_parent",
+                                                "width": "match_parent",
+                                                "weight": "5",
+                                                "Value": "",
+                                                "Variable": "bird_info",
+                                                "orientation": "vertical",
+                                                "Elements": [
+                                                    {
+                                                        "type": "TextView",
+                                                        "height": "wrap_content",
+                                                        "width": "wrap_content",
+                                                        "weight": "1",
+                                                        "Value": "@bird_name",
+                                                        "Variable": "bird_name"
+                                                    },
+                                                    {
+                                                        "type": "TextView",
+                                                        "height": "wrap_content",
+                                                        "width": "wrap_content",
+                                                        "weight": "1",
+                                                        "Value": "@date_time",
+                                                        "Variable": "date_time"
+                                                    },
+                                                    {
+                                                        "type": "TextView",
+                                                        "height": "wrap_content",
+                                                        "width": "wrap_content",
+                                                        "weight": "1",
+                                                        "Value": "@bird_views",
+                                                        "Variable": "bird_views"
+                                                    }
+                                                ],
+                                                "BackgroundColor": "",
+                                                "StrokeWidth": "",
+                                                "Padding": ""
+                                            }
+                                        ],
+                                        "BackgroundColor": "",
+                                        "StrokeWidth": "",
+                                        "Padding": ""
+                                    }
+                                ],
+                                "BackgroundColor": "",
+                                "StrokeWidth": "",
+                                "Padding": ""
+                            }
+                        ],
+                        "onlineOnAfterStart": false
+                    },
+                    {
+                        "Name": "Карточка птицы",
+                        "type": "Operation",
+                        "Elements": [
+                            {
+                                "Value": "",
+                                "Variable": "",
+                                "type": "LinearLayout",
+                                "weight": "0",
+                                "height": "match_parent",
+                                "width": "match_parent",
+                                "orientation": "vertical",
+                                "Elements": [
+                                    {
+                                        "type": "Picture",
+                                        "height": "wrap_content",
+                                        "width": "wrap_content",
+                                        "weight": "0",
+                                        "Value": "",
+                                        "Variable": ""
+                                    },
+                                    {
+                                        "type": "TextView",
+                                        "height": "match_parent",
+                                        "width": "match_parent",
+                                        "weight": "0",
+                                        "Value": "Имя птицы",
+                                        "Variable": ""
+                                    }
+                                ],
+                                "BackgroundColor": "",
+                                "StrokeWidth": "",
+                                "Padding": ""
+                            }
+                        ],
+                        "Timer": false,
+                        "hideToolBarScreen": false,
+                        "noScroll": false,
+                        "handleKeyUp": false,
+                        "hideBottomBarScreen": false,
+                        "onlineOnStart": false,
+                        "onlineOnAfterStart": false,
+                        "onlineOnInput": false
+                    },
+                    {
+                        "Name": "Создание новой птицы",
+                        "type": "Operation",
+                        "Elements": [
+                            {
+                                "Value": "",
+                                "Variable": "",
+                                "type": "LinearLayout",
+                                "weight": "0",
+                                "height": "match_parent",
+                                "width": "match_parent",
+                                "orientation": "vertical",
+                                "Elements": [],
+                                "BackgroundColor": "",
+                                "StrokeWidth": "",
+                                "Padding": ""
+                            }
+                        ],
+                        "Timer": false,
+                        "hideToolBarScreen": false,
+                        "noScroll": false,
+                        "handleKeyUp": false,
+                        "hideBottomBarScreen": false,
+                        "onlineOnStart": false,
+                        "onlineOnAfterStart": false,
+                        "onlineOnInput": false
+                    }
+                ]
+            }
+        ],
+        "ConfigurationSettings": {
+            "uid": "2344bdb3b1c34d6abab28e0f8af1ccbe"
+        },
+        "ConfigurationTags": "Py,off-line",
+        "PyHandlers": "IiIiCmltcG9ydCB1aV9nbG9iYWwKZnJvbSBwb255Lm9ybS5jb3JlIGltcG9ydCBkYl9zZXNzaW9uCmZyb20gcG9ueSBpbXBvcnQgb3JtCmZyb20gcG9ueS5vcm0gaW1wb3J0IERhdGFiYXNlLCBSZXF1aXJlZCwgU2V0LCBzZWxlY3QsIGNvbW1pdAppbXBvcnQganNvbgoiIiIKCgpkZWYgc2FtcGxlMV9vbl9jcmVhdGUoaGFzaE1hcCwgX2ZpbGVzPU5vbmUsIF9kYXRhPU5vbmUpOgogICAgaWYgbm90IGhhc2hNYXAuY29udGFpbnNLZXkoImEiKToKICAgICAgICBoYXNoTWFwLnB1dCgiYSIsICIiKQogICAgaWYgbm90IGhhc2hNYXAuY29udGFpbnNLZXkoImIiKToKICAgICAgICBoYXNoTWFwLnB1dCgiYiIsICIiKQogICAgaWYgbm90IGhhc2hNYXAuY29udGFpbnNLZXkoInRvYXN0Iik6CiAgICAgICAgaGFzaE1hcC5wdXQoInRvYXN0IiwgIiIpCiAgICByZXR1cm4gaGFzaE1hcAoKCmRlZiBzYW1wbGUxX29uX2lucHV0KGhhc2hNYXAsIF9maWxlcz1Ob25lLCBfZGF0YT1Ob25lKToKICAgIGlmIGhhc2hNYXAuZ2V0KCJsaXN0ZW5lciIpID09ICJidG5fcmVzIjoKICAgICAgICBoYXNoTWFwLnB1dCgidG9hc3QiLCBzdHIoaW50KGhhc2hNYXAuZ2V0KCJhIikpIC0gaW50KGhhc2hNYXAuZ2V0KCJiIikpKSkKCiAgICByZXR1cm4gaGFzaE1hcAoKIiIiCmRlZiBpbml0X29uX3N0YXJ0KGhhc2hNYXAsIF9maWxlcz1Ob25lLCBfZGF0YT1Ob25lKToKICAgIHVpX2dsb2JhbC5pbml0KCkKICAgIHJldHVybiBoYXNoTWFwCgoKZGVmIGlucHV0X3F0eShoYXNoTWFwLCBfZmlsZXM9Tm9uZSwgX2RhdGE9Tm9uZSk6CiAgICB3aXRoIGRiX3Nlc3Npb246CiAgICAgICAgcCA9IHVpX2dsb2JhbC5SZWNvcmQoYmFyY29kZT1oYXNoTWFwLmdldCgnYmFyY29kZScpLCBuYW1lPWhhc2hNYXAuZ2V0KCdub20nKSwgcXR5PWludChoYXNoTWFwLmdldCgncXR5JykpKQogICAgICAgIGNvbW1pdCgpCgogICAgaGFzaE1hcC5wdXQoIlNob3dTY3JlZW4iLCAi0KHQutCw0L3QuNGA0L7QstCw0L3QuNC1INGI0YLRgNC40YXQutC+0LTQsCIpCiAgICBoYXNoTWFwLnB1dCgidG9hc3QiLCAi0JTQvtCx0LDQstC70LXQvdC+IikKICAgIHJldHVybiBoYXNoTWFwCgoKZGVmIG9uX3N0YXJ0X2JhcmNvZGUoaGFzaE1hcCwgX2ZpbGVzPU5vbmUsIF9kYXRhPU5vbmUpOgogICAgdGFibGUgPSB7CiAgICAgICAgInR5cGUiOiAidGFibGUiLAogICAgICAgICJ0ZXh0c2l6ZSI6ICIyMCIsCiAgICAgICAgImNvbHVtbnMiOiBbCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICJuYW1lIjogImJhcmNvZGUiLAogICAgICAgICAgICAgICAgImhlYWRlciI6ICJCYXJjb2RlIiwKICAgICAgICAgICAgICAgICJ3ZWlnaHQiOiAiMiIKICAgICAgICAgICAgfSwKICAgICAgICAgICAgewogICAgICAgICAgICAgICAgIm5hbWUiOiAibmFtZSIsCiAgICAgICAgICAgICAgICAiaGVhZGVyIjogIk5hbWUiLAogICAgICAgICAgICAgICAgIndlaWdodCI6ICIyIgogICAgICAgICAgICB9LAogICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAibmFtZSI6ICJxdHkiLAogICAgICAgICAgICAgICAgImhlYWRlciI6ICJRdHkuIiwKICAgICAgICAgICAgICAgICJ3ZWlnaHQiOiAiMSIKICAgICAgICAgICAgfQogICAgICAgIF0KICAgIH0KICAgICMgd29yayB3aXRoIFNRTCB2aWEgUG9ueSBPUk0KICAgIHF1ZXJ5ID0gc2VsZWN0KGMgZm9yIGMgaW4gdWlfZ2xvYmFsLlJlY29yZCkKICAgIHJvd3MgPSBbXQogICAgZm9yIHJlY29yZCBpbiBxdWVyeToKICAgICAgICByb3dzLmFwcGVuZCh7ImJhcmNvZGUiOiByZWNvcmQuYmFyY29kZSwgIm5hbWUiOiByZWNvcmQubmFtZSwgInF0eSI6IHJlY29yZC5xdHl9KQoKICAgIHRhYmxlWydyb3dzJ10gPSByb3dzCiAgICBoYXNoTWFwLnB1dCgidGFibGUiLCBqc29uLmR1bXBzKHRhYmxlKSkKCiAgICByZXR1cm4gaGFzaE1hcAoKCmRlZiBvbl9zdGFydF9hY3RpdmVfY3YoaGFzaE1hcCwgX2ZpbGVzPU5vbmUsIF9kYXRhPU5vbmUpOgogICAgaW1wb3J0IHNxbGl0ZTMgICMgVGhpcyBpcyBhbm90aGVyIHdheSB0byB3b3JrIHdpdGggU1FMCiAgICBmcm9tIHNxbGl0ZTMuZGJhcGkyIGltcG9ydCBFcnJvcgogICAgaW1wb3J0IGpzb24KCiAgICAjIGNyZWF0ZSBjb25uZWN0aW9uIHdpdGggZGF0YWJhc2UKICAgIGNvbm4gPSBOb25lCiAgICB0cnk6CiAgICAgICAgY29ubiA9IHNxbGl0ZTMuY29ubmVjdCgnLy9kYXRhL2RhdGEvcnUudHJhdmVsZm9vZC5zaW1wbGVfdWkvZGF0YWJhc2VzL1NpbXBsZVdNUycpCiAgICBleGNlcHQgRXJyb3IgYXMgZToKICAgICAgICByYWlzZSBWYWx1ZUVycm9yKCfQndC10YIg0YHQvtC10LTQuNC90LXQvdC40Y8g0YEg0LHQsNC30L7QuSEnKQoKICAgIGN1cnNvciA9IGNvbm4uY3Vyc29yKCkKICAgIGN1cnNvci5leGVjdXRlKCJTRUxFQ1QgYmFyY29kZSxuYW1lLHF0eSBGUk9NIFJlY29yZCIpCgogICAgcmVzdWx0cyA9IGN1cnNvci5mZXRjaGFsbCgpCgogICAgZ3JlZW5fbGlzdCA9IFtdCiAgICByZWRfbGlzdCA9IFtdCiAgICBpbmZvX2xpc3QgPSBbXQogICAgZm9yIGxpbmsgaW4gcmVzdWx0czoKICAgICAgICBqb2IgPSB7Im9iamVjdCI6IHN0cihsaW5rWzBdKSwgImluZm8iOiBzdHIobGlua1sxXSkgKyAiIDwvbj4g0J7RgdGC0LDRgtC+0Lo6IDxiaWc+IiArIHN0cihsaW5rWzJdKSArICI8L2JpZz4ifQogICAgICAgIGluZm9fbGlzdC5hcHBlbmQoam9iKQogICAgICAgIGdyZWVuX2xpc3QuYXBwZW5kKGxpbmtbMF0pCgogICAgY29ubi5jbG9zZSgpCgogICAgaGFzaE1hcC5wdXQoIm9iamVjdF9pbmZvX2xpc3QiLCBqc29uLmR1bXBzKGluZm9fbGlzdCwgZW5zdXJlX2FzY2lpPUZhbHNlKSkKICAgIGhhc2hNYXAucHV0KCJncmVlbl9saXN0IiwgJzsnLmpvaW4oZ3JlZW5fbGlzdCkpCgogICAgcmV0dXJuIGhhc2hNYXAKCgojIHVuZGVyIGNvbnN0cnVjdGlvbgpkZWYgc2FtcGxlMV9zZXRzY3JlZW5zaG90KGhhc2hNYXAsIF9maWxlcz1Ob25lLCBfZGF0YT1Ob25lKToKICAgIGlmIGhhc2hNYXAuZ2V0KCJsaXN0ZW5lciIpID09ICJidG5fc2V0IjoKICAgICAgICBoYXNoTWFwLnB1dCgic2V0U2NyZWVuc2hvdFVSTCIsICJodHRwOi8vMTkyLjE2OC4xLjE0MzoyMDc1L3Bvc3Rfc2NyZWVuc2hvdCIpCiAgICBlbGlmIGhhc2hNYXAuZ2V0KCJsaXN0ZW5lciIpID09ICJidG5fc2VuZCI6CiAgICAgICAgaGFzaE1hcC5wdXQoInNlbmRTY3JlZW5zaG90cyIsICIzIikKCiAgICByZXR1cm4gaGFzaE1hcAoiIiI=",
+        "RunPython": true
+    }
+}
