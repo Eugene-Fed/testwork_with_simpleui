@@ -284,10 +284,6 @@ def customtable_on_open(hashMap, _files=None, _data=None):
     return hashMap
 
 
-def detail_card_on_open(hashMap, _files=None, _data=None):
-
-    return hashMap
-
 def customcards_touch(hashMap, _files=None, _data=None):
     if hashMap.get("listener") == "CardsClick":
         # запоминаем ID карты, чтобы передать в глобальные переменные необходимые значения
@@ -299,6 +295,7 @@ def customcards_touch(hashMap, _files=None, _data=None):
                 for key in bird:
                     # передаем значения всех ключей из БД в одноименные глобальные переменные
                     hashMap.put(key, bird[key])
+        # Модальный экран не завелся, поэтому остановился на обычном с обработкой возврата
         hashMap.put("ShowScreen", "Карточка")
         # click = True          # не знаю что это дает
     else:
@@ -311,12 +308,26 @@ def customcards_touch(hashMap, _files=None, _data=None):
 
 
 def customtable_touch(hashMap, _files=None, _data=None):
-  if hashMap.get("listener")=="CardsClick":
+  if hashMap.get("listener") == "CardsClick":
     #hashMap.put("ShowScreen","Результат")
     click=True
   else:  
     hashMap.put("toast","res="+str(hashMap.get("listener")+"/"+str(hashMap.get("layout_listener"))+"/"+str(hashMap.get("card_data"))))
   return hashMap  
+
+
+def detail_card_touch(hashMap, _files=None, _data=None):
+    if hashMap.get("listener") == "ON_BACK_PRESSED":
+        hashMap.put("toast", "ON_BACK_PRESSED")
+        hashMap.put("ShowScreen", "Список птиц")
+    if hashMap.get("listener") == "BACK_BUTTON":
+        hashMap.put("toast", "BACK_BUTTON")
+        hashMap.put("ShowScreen", "Список птиц")
+    if hashMap.get("listener") == "btn_close":
+        hashMap.put("toast", "btn_close")
+        hashMap.put("ShowScreen", "Список птиц")
+
+    return hashMap
 
 
 def customtable_result_input(hashMap, _files=None, _data=None):
