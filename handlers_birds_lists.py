@@ -109,36 +109,8 @@ def customcards_on_open(hashMap, _files=None, _data=None):
              "views": str(bird["views"])
              })
 
-    """
-    for i in range(0,5):
-      if i==0:
-        c =  {
-          "group": "Комплектующие"
-        }
-        j["customcards"]["cardsdata"].append(c)
-
-      if i==4:
-        c =  {
-          "group": "Уценка"
-        }
-      
-        j["customcards"]["cardsdata"].append(c)   
-
-      c =  {
-        "key": str(i),
-        "descr": "Pos. "+str(i),
-        "val": str(random.randint(10, 10000))+" руб.",
-        "string1": "Материнская плата ASUS ROG MAXIMUS Z690 APEX",
-        "string2": "Гнездо процессора LGA 1700",
-        "string3": "Частотная спецификация памяти 4800 МГц"
-      }
-      j["customcards"]["cardsdata"].append(c)
-        
-        """
-
     if not hashMap.containsKey("cards"):
       hashMap.put("cards",json.dumps(table_new,ensure_ascii=False).encode('utf8').decode())
-    
     return hashMap
 
 
@@ -312,9 +284,30 @@ def customtable_on_open(hashMap, _files=None, _data=None):
     return hashMap
 
 
-def customcards_touch(hashMap,_files=None,_data=None):
-  hashMap.put("toast", "res="+str(hashMap.get("listener")+"/"+str(hashMap.get("layout_listener"))+"/"+str(hashMap.get("card_data"))))
-  return hashMap
+def detail_card_on_open(hashMap, _files=None, _data=None):
+
+    return hashMap
+
+def customcards_touch(hashMap, _files=None, _data=None):
+    if hashMap.get("listener") == "CardsClick":
+        # запоминаем ID карты, чтобы передать в глобальные переменные необходимые значения
+        selected_card_key = hashMap.get('selected_card_key')
+        hashMap.put("toast", str(selected_card_key))
+        # TODO тут можно все красиво оформить через Pandas, но это надо еще модули подключать. Поэтому перебором.
+        for bird in BIRDS:
+            if bird["id"] == selected_card_key:
+                for key in bird:
+                    # передаем значения всех ключей из БД в одноименные глобальные переменные
+                    hashMap.put(key, bird[key])
+        hashMap.put("ShowScreen", "Карточка")
+        # click = True          # не знаю что это дает
+    else:
+        # card_data = json.loads(str(hashMap.get('card_data')))
+        card_data = hashMap.get('card_data')  # оказалось сюда данные приходят только от кнопок, но не от карточек
+        hashMap.put("toast", f"res={hashMap.get('listener')}/"
+                             f"{str(hashMap.get('layout_listener'))}/"
+                             f"{str(hashMap.get('card_data'))}")
+    return hashMap
 
 
 def customtable_touch(hashMap, _files=None, _data=None):
