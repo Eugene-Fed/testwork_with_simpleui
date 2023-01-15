@@ -8,12 +8,110 @@ import json
 from ru.travelfood.simple_ui import NoSQL as noClass
 from java import jclass
 
+TEXT_SIZE = 20
 BIRDS = [
-    {"id": "000", "date_time": "2022.01.15 17:21", "name": "Синица", "color": "Yellow, Black and White", "photo": None, "views": 0},
-    {"id": "001", "date_time": "2022.01.15 17:22", "name": "Corvus Corax", "color": "Black", "bird_photo": None, "bird_views": 0},
-    {"id": "002", "date_time": "2022.01.15 17:22", "name": "Toucan", "color": "Black and White", "photo": None, "views": 0}
+    {"id": "000", "date_time": "2022.01.15 17:21", "name": "Titmouse", "color": "Yellow, Black and White", "photo": None, "views": 0},
+    {"id": "001", "date_time": "2022.01.15 17:22", "name": "Corvus Corax", "color": "Black", "photo": None, "views": 0},
+    {"id": "002", "date_time": "2022.01.15 17:23", "name": "Cockatoo", "color": "White and Yellow", "photo": None, "views": 0},
+    {"id": "003", "date_time": "2022.01.15 17:24", "name": "Toucan", "color": "Black and White", "photo": None, "views": 0}
 ]
 
+BIRDS_JSON = {
+    "cards": [
+        {
+            "key": BIRDS[0]["id"],
+            "picture": BIRDS[0]["photo"],
+            "description": "",
+            "items": [
+                {
+                    "key": "name",
+                    "value": BIRDS[0]["name"],
+                    "size": "15"
+                },
+                {
+                    "key": "color",
+                    "value": BIRDS[0]["color"],
+                    "size": "10"
+                },
+                {
+                    "key": "views",
+                    "value": BIRDS[0]["views"],
+                    "size": "10"
+                },
+                {
+                    "key": "date_time",
+                    "value": BIRDS[0]["date_time"],
+                    "size": "10"
+                }
+            ]
+        },
+        {
+            "key": BIRDS[1]["id"],
+            "picture": BIRDS[1]["photo"],
+            "description": "",
+            "items": [
+                {
+                    "key": "name",
+                    "value": BIRDS[1]["name"],
+                    "size": "15"
+                },
+                {
+                    "key": "color",
+                    "value": BIRDS[1]["color"],
+                    "size": "10"
+                },
+                {
+                    "key": "views",
+                    "value": BIRDS[1]["views"],
+                    "size": "10"
+                },
+                {
+                    "key": "date_time",
+                    "value": BIRDS[1]["date_time"],
+                    "size": "10"
+                }
+            ]
+        },
+        {
+            "key": BIRDS[2]["id"],
+            "picture": BIRDS[2]["photo"],
+            "description": "",
+            "items": [
+                {
+                    "key": "name",
+                    "value": BIRDS[2]["name"],
+                    "size": "15"
+                },
+                {
+                    "key": "color",
+                    "value": BIRDS[2]["color"],
+                    "size": "10"
+                },
+                {
+                    "key": "views",
+                    "value": BIRDS[2]["views"],
+                    "size": "10"
+                },
+                {
+                    "key": "date_time",
+                    "value": BIRDS[2]["date_time"],
+                    "size": "10"
+                }
+            ]
+        }
+    ]
+}
+
+
+def generate_cards(data: list) -> json:
+    """
+    Функция для генерации JSON взамен константы BIRDS_OLD
+    :param data:
+    :return:
+    """
+    for d in data:
+        pass
+    return None
 
 def on_create(hashMap, _files=None, _data=None):
     if not hashMap.containsKey("a"):
@@ -82,226 +180,50 @@ def inventory_on_start(hashMap, _files=None, _data=None):
     Задаем стартовый набор данных о птицах в формате `кастомного` списка
     """
 
-    """
-    birds = {
-    "Value": "",
-    "Variable": "screen",
-    "type": "LinearLayout",
-    "weight": "0",
-    "height": "match_parent",
-    "width": "match_parent",
-    "orientation": "vertical",
-    "Elements": [
-        {
-            "type": "LinearLayout",
-            "height": "match_parent",
-            "width": "match_parent",
-            "weight": "0",
-            "Value": "",
-            "Variable": "element",
-            "orientation": "horizontal",
-            "Elements": [
-                {
-                    "type": "Picture",
-                    "height": "match_parent",
-                    "width": "match_parent",
-                    "weight": "1",
-                    "Value": "@bird_photo",
-                    "Variable": "bird_photo"
-                },
-                {
-                    "type": "LinearLayout",
-                    "height": "match_parent",
-                    "width": "match_parent",
-                    "weight": "5",
-                    "Value": "",
-                    "Variable": "bird_info",
-                    "orientation": "vertical",
-                    "Elements": [
-                        {
-                            "type": "TextView",
-                            "height": "wrap_content",
-                            "width": "wrap_content",
-                            "weight": "1",
-                            "Value": "@bird_name",
-                            "Variable": "bird_name"
-                        },
-                        {
-                            "type": "TextView",
-                            "height": "wrap_content",
-                            "width": "wrap_content",
-                            "weight": "1",
-                            "Value": "@date_time",
-                            "Variable": "date_time"
-                        },
-                        {
-                            "type": "TextView",
-                            "height": "wrap_content",
-                            "width": "wrap_content",
-                            "weight": "1",
-                            "Value": "@bird_views",
-                            "Variable": "bird_views"
-                        }
-                    ],
-                    "BackgroundColor": "",
-                    "StrokeWidth": "",
-                    "Padding": ""
-                }
-            ],
-            "BackgroundColor": "",
-            "StrokeWidth": "",
-            "Padding": ""
-        }
-    ],
-    "BackgroundColor": "",
-    "StrokeWidth": "",
-    "Padding": ""
-}
-    """
-    """
-    birds = {
-        "customcards":{
-            "options":{
-                "search_enabled":True,
-                "save_position":True
+    table_graphic = {
+        "type": "table",
+        "textsize": TEXT_SIZE,
+        "hidecaption": "true",
+        "hideinterline": "true",
+        "columns": [
+            {
+                "name": "id",
+                "header": "ID",
+                "weight": "2"
             },
-            "layout": {
-                "type": "LinearLayout",
-                "orientation": "vertical",
-                "height": "match_parent",
-                "width": "match_parent",
-                "weight": "0",
-                "Elements": [
-                    {
-                    "type": "LinearLayout",
-                    "orientation": "horizontal",
-                    "height": "wrap_content",
-                    "width": "match_parent",
-                    "weight": "0",
-                    "Elements": [
-                        {
-                        "type": "Picture",
-                        "show_by_condition": "",
-                        "Value": "@pic1",
-                        "NoRefresh": False,
-                        "document_type": "",
-                        "mask": "",
-                        "Variable": "",
-                        "TextSize": "16",
-                        "TextColor": "#DB7093",
-                        "TextBold": True,
-                        "TextItalic": False,
-                        "BackgroundColor": "",
-                        "width": "match_parent",
-                        "height": "wrap_content",
-                        "weight": 2
-                        },
-                        {
-                        "type": "LinearLayout",
-                        "orientation": "vertical",
-                        "height": "wrap_content",
-                        "width": "match_parent",
-                        "weight": "1",
-                        "Elements": [
-                            {
-                            "type": "TextView",
-                            "show_by_condition": "",
-                            "Value": "@string1",
-                            "NoRefresh": False,
-                            "document_type": "",
-                            "mask": "",
-                            "Variable": ""
-                            },
-                            {
-                            "type": "TextView",
-                            "show_by_condition": "",
-                            "Value": "@string2",
-                            "NoRefresh": False,
-                            "document_type": "",
-                            "mask": "",
-                            "Variable": ""
-                            },
-                            {
-                            "type": "TextView",
-                            "show_by_condition": "",
-                            "Value": "@string3",
-                            "NoRefresh": False,
-                            "document_type": "",
-                            "mask": "",
-                            "Variable": ""
-                            }
-                        ]
-                        },
-                        {
-                        "type": "TextView",
-                        "show_by_condition": "",
-                        "Value": "@val",
-                        "NoRefresh": False,
-                        "document_type": "",
-                        "mask": "",
-                        "Variable": "",
-                        "TextSize": "16",
-                        "TextColor": "#DB7093",
-                        "TextBold": True,
-                        "TextItalic": False,
-                        "BackgroundColor": "",
-                        "width": "match_parent",
-                        "height": "wrap_content",
-                        "weight": 2
-                        }
-                    ]},
-                    {
-                    "type": "TextView",
-                    "show_by_condition": "",
-                    "Value": "@descr",
-                    "NoRefresh": False,
-                    "document_type": "",
-                    "mask": "",
-                    "Variable": "",
-                    "TextSize": "-1",
-                    "TextColor": "#6F9393",
-                    "TextBold": False,
-                    "TextItalic": True,
-                    "BackgroundColor": "",
-                    "width": "wrap_content",
-                    "height": "wrap_content",
-                    "weight": 0
-                    }
-                ]
+            {
+                "name": "name",
+                "header": "Имя",
+                "weight": "5"
             }
-        }
+        ],
+        "rows": []
     }
-    """
-
-    element = {
+    table_new = {
         "customcards": {
             "options": {
                 "search_enabled": True,
                 "save_position": True
             },
             "layout": {
-                "Value": "",
-                "Variable": "screen",
                 "type": "LinearLayout",
+                "orientation": "vertical",
                 "weight": "0",
                 "height": "match_parent",
                 "width": "match_parent",
-                "orientation": "vertical",
                 "Elements": [
                     {
                         "type": "LinearLayout",
-                        "height": "match_parent",
+                        "height": "wrap_content",
                         "width": "match_parent",
                         "weight": "0",
-                        "Value": "",
-                        "Variable": "element",
                         "orientation": "horizontal",
                         "Elements": [
                             {
                                 "type": "Picture",
                                 "show_by_condition": "",
                                 "NoRefresh": False,
-                                "height": "match_parent",
+                                "height": "wrap_content",
                                 "width": "match_parent",
                                 "weight": 1,
                                 "Value": "@photo",
@@ -309,75 +231,60 @@ def inventory_on_start(hashMap, _files=None, _data=None):
                             },
                             {
                                 "type": "LinearLayout",
-                                "height": "match_parent",
+                                "height": "wrap_content",
                                 "width": "match_parent",
                                 "weight": 5,
-                                "Value": "",
-                                "Variable": "info",
                                 "orientation": "vertical",
                                 "Elements": [
                                     {
                                         "type": "TextView",
                                         "show_by_condition": "",
-                                        "height": "wrap_content",
-                                        "width": "wrap_content",
+                                        "NoRefresh": False,
                                         "weight": 1,
                                         "TextBold": True,
-                                        "Value": "@name",
-                                        "Variable": ""
+                                        "Value": "@name"
                                     },
                                     {
                                         "type": "TextView",
-                                        "height": "wrap_content",
-                                        "width": "wrap_content",
+                                        "NoRefresh": False,
                                         "weight": 1,
                                         "TextItalic": True,
                                         "TextSize": "15",
-                                        "Value": "@color",
-                                        "Variable": ""
+                                        "Value": "@color"
                                     },
                                     {
                                         "type": "TextView",
-                                        "height": "wrap_content",
-                                        "width": "wrap_content",
+                                        "NoRefresh": False,
                                         "weight": 1,
                                         "TextSize": "15",
-                                        "Value": "views",
-                                        "Variable": ""
+                                        "Value": "@views",
                                     }
-                                ],
-                                "BackgroundColor": "",
-                                "StrokeWidth": "",
-                                "Padding": ""
+                                ]
                             }
-                        ],
-                        "BackgroundColor": "",
-                        "StrokeWidth": "",
-                        "Padding": ""
+                        ]
                     }
-                ],
-                "BackgroundColor": "",
-                "StrokeWidth": "",
-                "Padding": ""
-            }
+                ]
+            },
+            "cardsdata": []
         }
     }
 
-
-    # query = select(c for c in ui_global.SW_Inventory)
-    element["customcards"]["cardsdata"] = []
-
-    # {"id": "000", "date_time": "2022.01.15 17:21", "bird_name": "Синица", "bird_photo": None, "bird_views": 0}
-
+    # table_new["customcards"]["cardsdata"] = []
+    # {"id": "002", "date_time": "2022.01.15 17:22", "name": "Toucan", "color": "Black and White", "photo": None, "views": 0}
     for bird in BIRDS:
-        element["customcards"]["cardsdata"].append(
-            {"key": bird["id"],
-             "name": bird["name"],
-             "photo": bird["photo"],
-             "color": bird["color"],
-             "views": bird["views"]})
-    hashMap.put("cards", json.dumps(element, ensure_ascii=False).encode('utf8').decode())
+        table_graphic['rows'].append({"id": str(bird["id"]), "name": str(bird["name"])})
+        table_new["customcards"]["cardsdata"].append(
+            {"key": str(bird["id"]),
+             "name": str(bird["name"]),
+             "photo": str(bird["photo"]),
+             "color": str(bird["color"]),
+             "views": str(bird["views"])
+             })
 
+    # print(json.dumps(table_old["rows"], ensure_ascii=False))
+    hashMap.put("table_graphic", json.dumps(table_graphic))
+    # hashMap.put("table_old", json.dumps(table_new, ensure_ascii=False))
+    hashMap.put("cards", json.dumps(table_new, ensure_ascii=False))
     return hashMap
 
 
@@ -410,6 +317,11 @@ def putget_input(hashMap, _files=None, _data=None):
     if hashMap.get("listener") == "btn_destroy":
         ncl.destroy()
         hashMap.put("speak", "Attention! All data has been destroyed!")
+
+    if hashMap.get("listener") == "btn_destroy":
+        ncl.destroy()
+        hashMap.put("speak", "Attention! All data has been destroyed!")
+
     return hashMap
 
 
@@ -460,3 +372,7 @@ def init(hashMap, _files=None, _data=None):
     ncl.run_index("surnameindx", "surname")
 
     return hashMap
+
+
+if __name__ == "__main__":
+    _ = inventory_on_start(hashMap=None)
