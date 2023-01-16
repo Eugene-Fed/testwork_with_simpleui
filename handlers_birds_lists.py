@@ -106,11 +106,11 @@ def customcards_on_open(hashMap, _files=None, _data=None):
         "cardsdata": []
     }
     }
-    # table_new["customcards"]["cardsdata"]=[]
 
-    # json.loads(ncl.encode("utf-8"))
-    for key in ncl.getallkeys():
-        hashMap.put("toast", str(key))
+    keys = json.loads(ncl.getallkeys().encode("utf-8"))
+    hashMap.put("toast", f"Keys = {str(keys[0])}")
+    for key in keys:
+        hashMap.put("toast", f"key in keys = {str(key)}")
         data = ncl.get(key)
         table_new["customcards"]["cardsdata"].append({
             "key": str(key),
@@ -315,7 +315,7 @@ def customcards_touch(hashMap, _files=None, _data=None):
     if hashMap.get("listener") == "CardsClick":
         # запоминаем ID карты, чтобы передать в глобальные переменные необходимые значения
         selected_card_key = hashMap.get('selected_card_key')
-        hashMap.put("toast", str(selected_card_key))
+        hashMap.put("toast", str(f"Selected Card: {selected_card_key}"))
 
         """
         # TODO тут можно все красиво оформить через Pandas, но это надо еще модули подключать. Поэтому пока перебором.
