@@ -2,7 +2,7 @@
     "ClientConfiguration": {
         "ConfigurationName": "Примеры NoSQL",
         "ConfigurationDescription": "Примеры утилизации класса NoSQL из пайтона, который предоставляет прямую рабту с NoSQL ",
-        "ConfigurationVersion": "0.0.2",
+        "ConfigurationVersion": "0.0.2-1",
         "Processes": [
             {
                 "type": "Process",

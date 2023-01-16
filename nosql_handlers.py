@@ -4,8 +4,8 @@ from java import jclass
 
 
 # это для нативного тоста (но в 11 Андроиде импорт библиотеки com.chaquo.python - вызывает ошибку, и приводит к неработоспособности всех функций)
-# from android.widget import Toast
-# from com.chaquo.python import Python
+from android.widget import Toast
+from com.chaquo.python import Python
 
 
 def putget_input(hashMap, _files=None, _data=None):
@@ -15,8 +15,8 @@ def putget_input(hashMap, _files=None, _data=None):
     if hashMap.get("listener") == "btn_text":
         ncl.put("k1", "Это строка", True)
         res1 = ncl.get("k1")
-        # Toast.makeText(Python.getPlatform().getApplication(), str(res1)+" тип "+str(type(res1)),
-        #               Toast.LENGTH_SHORT).show()
+        Toast.makeText(Python.getPlatform().getApplication(), str(res1)+" тип "+str(type(res1)),
+                      Toast.LENGTH_SHORT).show()
         hashMap.put("toast", f"`{res1}`: тип {type(res1)}")
 
     if hashMap.get("listener") == "btn_number":
@@ -86,12 +86,14 @@ def search_input(hashMap, _files=None, _data=None):
     ncl.put("jk3", json.dumps(j3, ensure_ascii=False), True)
 
     # Поиск без индекса
-    # res = ncl.findJSON("name", "Дарья")
-    # jres = json.loads(str(res).encode("utf-8"))
+    res = ncl.findJSON("name", "Дарья")
+    jres = json.loads(str(res).encode("utf-8"))
 
+    """
     # Поиск по индексу
     res = ncl.findJSON_index("surnameindx", "surname", "Синицын")
     jres = json.loads(str(res).encode("utf-8"))
+    """
 
     hashMap.put("toast", str(jres))
     return hashMap
