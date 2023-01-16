@@ -8,14 +8,15 @@ BIRDS = [
     {"id": "000", "date_time": "2022.01.15 17:21", "name": "Titmouse", "color": "Yellow, Black and White", "photo": None, "views": 0},
     {"id": "001", "date_time": "2022.01.15 17:22", "name": "Corvus Corax", "color": "Black", "photo": None, "views": 0},
     {"id": "002", "date_time": "2022.01.15 17:23", "name": "Cockatoo", "color": "White and Yellow", "photo": None, "views": 0},
-    {"id": "003", "date_time": "2022.01.15 17:24", "name": "Toucan", "color": "Black and White", "photo": None, "views": 0}
+    {"id": "003", "date_time": "2022.01.15 17:24", "name": "Toucan", "color": "Black and White", "photo": None, "views": 0},
+    {"id": "004", "date_time": "2022.01.16 05:54", "name": "Blackbird", "color": "Black", "photo": None, "views": 0}
 ]
 
 def customcards_on_open(hashMap, _files=None, _data=None):
     table_new = { "customcards": {
             "options":{
               "search_enabled":True,
-              "save_position":True
+              "save_position":False
             },
             "layout": {
                 "type": "LinearLayout",
@@ -310,13 +311,20 @@ def customcards_touch(hashMap, _files=None, _data=None):
     return hashMap
 
 
+# Приложение выкидывает исключение при любых попытках загрузить экран Списка из Карточки. Поэтому сделал без него
+def detail_card_touch(hashMap, _files=None, _data=None):
+    if hashMap.get("listener") == 'BACK_BUTTON':
+        hashMap.put("ShowScreen", "Список")
+    return hashMap
+
+
 def customtable_touch(hashMap, _files=None, _data=None):
   if hashMap.get("listener")=="CardsClick":
     #hashMap.put("ShowScreen","Результат")
     click=True
   else:  
     hashMap.put("toast","res="+str(hashMap.get("listener")+"/"+str(hashMap.get("layout_listener"))+"/"+str(hashMap.get("card_data"))))
-  return hashMap  
+  return hashMap
 
 
 def customtable_result_input(hashMap, _files=None, _data=None):

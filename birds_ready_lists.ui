@@ -32,7 +32,7 @@
         },
         "ConfigurationTags": "Py,off-line",
         "RunPython": true,
-        "ConfigurationVersion": "1.2",
+        "ConfigurationVersion": "1.2.2-1",
         "Launch": "Menu",
         "LaunchProcess": "",
         "LaunchDocument": "",
@@ -49,12 +49,12 @@
                 "Operations": [
                     {
                         "type": "Operation",
-                        "Name": "Список птиц",
+                        "Name": "Список",
                         "Timer": false,
                         "hideToolBarScreen": false,
-                        "noScroll": true,
+                        "noScroll": false,
                         "handleKeyUp": false,
-                        "noConfirmation": true,
+                        "noConfirmation": false,
                         "hideBottomBarScreen": false,
                         "onlineOnStart": false,
                         "send_when_opened": true,
@@ -101,7 +101,7 @@
                                 "Variable": "",
                                 "type": "LinearLayout",
                                 "weight": "0",
-                                "height": "match_parent",
+                                "height": "wrap_content",
                                 "width": "match_parent",
                                 "orientation": "vertical",
                                 "Elements": [
@@ -121,7 +121,8 @@
                                         "Value": "@name",
                                         "Variable": "",
                                         "TextColor": "#DB7093",
-                                        "TextSize": "20"
+                                        "TextSize": "30",
+                                        "TextBold": true
                                     },
                                     {
                                         "type": "TextView",
@@ -129,7 +130,8 @@
                                         "width": "match_parent",
                                         "weight": "1",
                                         "Value": "@color",
-                                        "Variable": ""
+                                        "Variable": "",
+                                        "TextSize": "15"
                                     },
                                     {
                                         "type": "TextView",
@@ -137,7 +139,8 @@
                                         "width": "match_parent",
                                         "weight": "1",
                                         "Value": "@views",
-                                        "Variable": ""
+                                        "Variable": "",
+                                        "TextColor": "15"
                                     },
                                     {
                                         "type": "TextView",
@@ -146,14 +149,71 @@
                                         "weight": "1",
                                         "Value": "@date_time",
                                         "Variable": ""
+                                    }
+                                ],
+                                "BackgroundColor": "",
+                                "StrokeWidth": "",
+                                "Padding": "",
+                                "gravity_vertical": "bottom"
+                            }
+                        ],
+                        "Timer": false,
+                        "hideToolBarScreen": true,
+                        "noScroll": true,
+                        "handleKeyUp": false,
+                        "hideBottomBarScreen": true,
+                        "onlineOnStart": false,
+                        "onlineOnAfterStart": false,
+                        "onlineOnInput": false,
+                        "noConfirmation": true,
+                        "DefOnInput": "",
+                        "DefOnlineOnCreate": "",
+                        "send_when_opened": false
+                    },
+                    {
+                        "Name": "Конструктор",
+                        "type": "Operation",
+                        "Elements": [
+                            {
+                                "Value": "",
+                                "Variable": "",
+                                "type": "LinearLayout",
+                                "weight": "0",
+                                "height": "match_parent",
+                                "width": "match_parent",
+                                "orientation": "vertical",
+                                "Elements": [
+                                    {
+                                        "type": "TextView",
+                                        "height": "wrap_content",
+                                        "width": "wrap_content",
+                                        "weight": "0",
+                                        "Value": "Введите имя птички:",
+                                        "Variable": ""
                                     },
                                     {
-                                        "type": "Button",
+                                        "type": "EditTextText",
                                         "height": "wrap_content",
-                                        "width": "match_parent",
-                                        "weight": "1",
-                                        "Value": "ЗАКРЫТЬ",
-                                        "Variable": "btn_close"
+                                        "width": "wrap_content",
+                                        "weight": "0",
+                                        "Value": "@new_name",
+                                        "Variable": "new_name"
+                                    },
+                                    {
+                                        "type": "TextView",
+                                        "height": "wrap_content",
+                                        "width": "wrap_content",
+                                        "weight": "0",
+                                        "Value": "Введите цвет крыльев:",
+                                        "Variable": ""
+                                    },
+                                    {
+                                        "type": "EditTextText",
+                                        "height": "wrap_content",
+                                        "width": "wrap_content",
+                                        "weight": "0",
+                                        "Value": "@new_color",
+                                        "Variable": "new_color"
                                     }
                                 ],
                                 "BackgroundColor": "",
@@ -162,10 +222,10 @@
                             }
                         ],
                         "Timer": false,
-                        "hideToolBarScreen": false,
+                        "hideToolBarScreen": true,
                         "noScroll": true,
                         "handleKeyUp": false,
-                        "hideBottomBarScreen": false,
+                        "hideBottomBarScreen": true,
                         "onlineOnStart": false,
                         "onlineOnAfterStart": false,
                         "onlineOnInput": false
