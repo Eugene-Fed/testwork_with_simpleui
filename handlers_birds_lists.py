@@ -19,6 +19,11 @@ BIRDS = {
 }
 
 
+def bird_creation_input(hashMap, _files=None, _data=None):
+    if hashMap.get("listener") == "btn_create":
+        hashMap.put("toast", "ПТИЧКА СОЗДАНА")
+    return hashMap
+
 def customcards_on_open(hashMap, _files=None, _data=None):
     noClass = jclass(NO_SQL_MODULE)
     ncl = noClass(DB_BIRDS)
@@ -361,12 +366,6 @@ def customtable_touch(hashMap, _files=None, _data=None):
 
 def customtable_result_input(hashMap, _files=None, _data=None):
     hashMap.put("ShowScreen", "Кастомная таблица")
-    return hashMap
-
-
-def bird_creation_input(hashMap, _files=None, _data=None):
-    if hashMap.get("listener") == 'btn_create':
-        hashMap.put("toast", "ПТИЧКА СОЗДАНА")
     return hashMap
 
 
