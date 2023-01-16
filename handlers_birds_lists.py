@@ -45,8 +45,8 @@ def append_birds(hashMap, _files=None, _data=None):
     # Универсальный расширитель списка птиц. Забираем hashMap из get_birds(), чтобы он 100% уже существовал
     hashMap, birds = get_birds(hashMap)
     # birds = json.loads(str(get_birds(hashMap).get(BIRDS_VAR)).encode("utf-8"))
-    birds.append(_data)
-    BIRDS.append(_data)   # Менять константы - некрасиво. Но `hashMap` не сохраняет данные между Процессами
+    birds.append(_data)   # не прокатило, ибо hashMap не сохраняет значения между Процессами
+    BIRDS.append(_data)   # TODO - убрать этот говнокод. Работает, но надо прокидывать сразу в БД, а не менять константы
     hashMap.put(BIRDS_VAR, json.dumps(birds, ensure_ascii=False).encode('utf8').decode())
     return hashMap, birds
 
@@ -69,16 +69,7 @@ def create_bird_on_input(hashMap, _files=None, _data=None):
             "views": 0
         })
         hashMap.put("toast", "ПТИЧКА СОЗДАНА")
-        # hashMap.put("StartProcessHashMap", "Птицы")
-        """
-        # Грязно и некрасиво менять константы. Но это временное решение
-        BIRDS.append({
-            "id": len(BIRDS),
-            "date_time": str(datetime.datetime.now()).split('.')[0],
-            "name": hashMap.get("new_name"),
-            "color": hashMap.get("new_color"),
-        })
-        """
+        # hashMap.put("StartProcessHashMap", "Птицы")   # не прокатило
     return hashMap
 
 def customcards_on_load(hashMap, _files=None, _data=None):
@@ -169,12 +160,11 @@ def customcards_on_load(hashMap, _files=None, _data=None):
         "cardsdata": []
     }
     }
-    # table_new["customcards"]["cardsdata"]=[]
 
     """
     # TODO - разобраться почему не взлетело 
     # json.loads(ncl.encode("utf-8"))
-    for key in ncl.getallkeys():
+    for key in ncl.getallkeys():        # скорее всего поэтому. getallkeys вообще все возвращает, а не только ID
         hashMap.put("toast", str(key))
         data = ncl.get(key)
         table_new["customcards"]["cardsdata"].append({
@@ -186,7 +176,6 @@ def customcards_on_load(hashMap, _files=None, _data=None):
         })
     """
     hashMap, birds = get_birds(hashMap)
-    # birds = json.loads(str(get_birds(hashMap).get(BIRDS_VAR)).encode("utf-8"))
     # Первоначальный тестовый вариант с работой по списку вместо БД
     for bird in birds:
         birds_table["customcards"]["cardsdata"].append(
@@ -201,181 +190,9 @@ def customcards_on_load(hashMap, _files=None, _data=None):
         hashMap.put("cards",json.dumps(birds_table,ensure_ascii=False).encode('utf8').decode())
     return hashMap
 
-"""
-# TODO - удалить за ненадобностью
-def customtable_on_open(hashMap, _files=None, _data=None):
-    
-    j = { "customtable":         {
-       "options":{
-              "search_enabled":False,
-              "save_position":True
-            },
-            
-            "layout":  {
-      "type": "LinearLayout",
-      "orientation": "vertical",
-      "height": "match_parent",
-      "width": "match_parent",
-      "weight": "0",
-      "Elements": [
-       {
-        "type": "LinearLayout",
-        "orientation": "horizontal",
-        "height": "wrap_content",
-        "width": "match_parent",
-        "weight": "0",
-        "Elements": [
-         {
-          "type": "Picture",
-          "show_by_condition": "",
-          "Value": "@pic1",
-          "NoRefresh": False,
-          "document_type": "",
-          "mask": "",
-          "Variable": "",
-          "TextSize": "16",
-          "TextColor": "#DB7093",
-          "TextBold": True,
-          "TextItalic": False,
-          "BackgroundColor": "",
-          "width": "match_parent",
-          "height": "wrap_content",
-          "weight": 2
-         },
-         {
-          "type": "LinearLayout",
-          "orientation": "vertical",
-          "height": "wrap_content",
-          "width": "match_parent",
-          "weight": "1",
-          "Elements": [
-           {
-            "type": "TextView",
-            "show_by_condition": "",
-            "Value": "@string1",
-            "NoRefresh": False,
-            "document_type": "",
-            "mask": "",
-            "Variable": ""
-           },
-           {
-            "type": "TextView",
-            "show_by_condition": "",
-            "Value": "@string2",
-            "NoRefresh": False,
-            "document_type": "",
-            "mask": "",
-            "Variable": ""
-           },
-           {
-            "type": "TextView",
-            "show_by_condition": "",
-            "Value": "@string3",
-            "NoRefresh": False,
-            "document_type": "",
-            "mask": "",
-            "Variable": ""
-           }
-          ]
-         },
-         {
-          "type": "TextView",
-          "show_by_condition": "",
-          "Value": "@val",
-          "NoRefresh": False,
-          "document_type": "",
-          "mask": "",
-          "Variable": "",
-          "TextSize": "16",
-          "TextColor": "#DB7093",
-          "TextBold": True,
-          "TextItalic": False,
-          "BackgroundColor": "",
-          "width": "match_parent",
-          "height": "wrap_content",
-          "weight": 2
-         } ,
-       
-               {
-                "type": "PopupMenuButton",
-                "show_by_condition": "",
-                "Value": "Удалить;Проверить",
-                "NoRefresh": False,
-                "document_type": "",
-                "mask": "",
-                "Variable": "menu_delete"
-                
-                }
-        ]
-       },
-       {
-        "type": "TextView",
-        "show_by_condition": "",
-        "Value": "@descr",
-        "NoRefresh": False,
-        "document_type": "",
-        "mask": "",
-        "Variable": "",
-        "TextSize": "-1",
-        "TextColor": "#6F9393",
-        "TextBold": False,
-        "TextItalic": True,
-        "BackgroundColor": "",
-        "width": "wrap_content",
-        "height": "wrap_content",
-        "weight": 0
-       },{
-          "type": "LinearLayout",
-          "orientation": "horizontal",
-          "height": "wrap_content",
-          "width": "match_parent",
-          "weight": "1",
-          "Elements": [{
-                    "type": "Button",
-                    "show_by_condition": "",
-                    "Value": "TST1",
-                    "Variable": "btn_tst1",
-                    "NoRefresh": False,
-                    "document_type": "",
-                    "mask": ""
-                    
-                },
-                {
-                    "type": "Button",
-                    "show_by_condition": "",
-                    "Value": "TST2",
-                    "Variable": "btn_tst2",
-                    "NoRefresh": False,
-                    "document_type": "",
-                    "mask": ""
-                    
-                }]}
-      ]
-}
-
-    }
-    }
-   
-    j["customtable"]["tabledata"]=[]
-    for i in range(0,50):
-        c =  {
-        "key": str(i),
-        "descr": "Pos. "+str(i),
-        "val": str(random.randint(10, 10000))+" руб.",
-        "string1": "Материнская плата ASUS ROG MAXIMUS Z690 APEX",
-        "string2": "Гнездо процессора LGA 1700",
-        "string3": "Частотная спецификация памяти 4800 МГц"
-      }
-        j["customtable"]["tabledata"].append(c)
-
-    hashMap.put("table",json.dumps(j,ensure_ascii=False).encode('utf8').decode())
-    
-    return hashMap
-"""
 
 def customcards_on_touch(hashMap, _files=None, _data=None):
     hashMap, birds = get_birds(hashMap)
-    # birds = json.loads(str(get_birds(hashMap).get(BIRDS_VAR)).encode("utf-8"))
     """
     noClass = jclass("ru.travelfood.simple_ui.NoSQL")
     ncl = noClass("birds_nosql")
@@ -385,11 +202,10 @@ def customcards_on_touch(hashMap, _files=None, _data=None):
         selected_card_key = hashMap.get('selected_card_key')
 
         # TODO тут можно все красиво оформить через Pandas, но это надо еще модули подключать. Поэтому пока перебором.
-        for bird in BIRDS:
+        for bird in birds:
             if str(bird["id"]) == selected_card_key:
                 for key in bird:
                     # передаем значения всех ключей из БД в одноименные глобальные переменные
-                    # hashMap.put("toast", str(key))
                     hashMap.put(key, str(bird[key]))
         """
         # TODO - не разобрался с объектом БД от этой либы. Пока без нее
@@ -399,7 +215,7 @@ def customcards_on_touch(hashMap, _files=None, _data=None):
         for key in selected_card:
             hashMap.put(key, selected_card[key])
         """
-        hashMap.put("toast", str(type(selected_card_key)))
+        hashMap.put("toast", str(selected_card_key))
         hashMap.put("ShowScreen", "Карточка")  # После того как данные для Детальной страницы получены, открываем ее
     """
     else:
@@ -413,6 +229,8 @@ def customcards_on_touch(hashMap, _files=None, _data=None):
 
 
 def detail_card_on_load(hashMap, _files=None, _data=None):
+    # Этот обработчик по сути лишний. Я не сразу понял почему Карточка перестала отображать данные.
+    # Оказалось дело было не здесь. Эту функцию вообще можно убрать отсюда и из Редактора - все равно будет работать.
     if not hashMap.containsKey("photo"):
         hashMap.put("photo", None)
     else:
@@ -442,32 +260,6 @@ def detail_card_touch(hashMap, _files=None, _data=None):
         hashMap.put("ShowScreen", "Список")
     return hashMap
 
-"""
-def customtable_touch(hashMap, _files=None, _data=None):
-  if hashMap.get("listener")=="CardsClick":
-    #hashMap.put("ShowScreen","Результат")
-    click=True
-  else:  
-    hashMap.put("toast","res="+str(hashMap.get("listener")+"/"+str(hashMap.get("layout_listener"))+"/"+str(hashMap.get("card_data"))))
-  return hashMap
-"""
-
-"""
-def customtable_result_input(hashMap, _files=None, _data=None):
-    hashMap.put("ShowScreen", "Кастомная таблица")
-    return hashMap
-
-
-def tests_openinig1(hashMap, _files=None, _data=None):
-    hashMap.put("SetTitle","Тестовое название")
-    hashMap.put("getJSONScreen","")
-    return hashMap
-
-
-def tests_input1(hashMap,_files=None,_data=None):
-    hashMap.put("toast",hashMap.get("JSONScreen"))
-    return hashMap
-"""
 
 def init(hashMap, _files=None, _data=None):
     """
