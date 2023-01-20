@@ -46,11 +46,12 @@ def append_birds(hashMap, _files=None, _data=None):
     hashMap, birds = get_birds(hashMap)
     # birds = json.loads(str(get_birds(hashMap).get(BIRDS_VAR)).encode("utf-8"))
     birds.append(_data)   # не прокатило, ибо hashMap не сохраняет значения между Процессами
-    BIRDS.append(_data)   # TODO - убрать этот говнокод. Работает, но надо прокидывать сразу в БД, а не менять константы
+    BIRDS.append(_data)   # TODO - заменить этот говнокод. Он РАБОТАЕТ, но надо прокидывать даннные сразу в БД, а не менять константы
     hashMap.put(BIRDS_VAR, json.dumps(birds, ensure_ascii=False).encode('utf8').decode())
     return hashMap, birds
 
 def create_bird_on_load(hashMap, _files=None, _data=None):
+    # Обработчик загрузки экрана "Создать птицу"
     if not hashMap.containsKey("new_name"):
         hashMap.put("new_name","")
     if not hashMap.containsKey("new_color"):
@@ -58,6 +59,7 @@ def create_bird_on_load(hashMap, _files=None, _data=None):
     return hashMap
 
 def create_bird_on_input(hashMap, _files=None, _data=None):
+    # Обработчик ввода данных экрана "Создать птицу"
     if hashMap.get("listener") == "btn_create":
         _, birds = get_birds(hashMap)
         hashMap, _ = append_birds(hashMap, _data={
@@ -69,14 +71,16 @@ def create_bird_on_input(hashMap, _files=None, _data=None):
             "views": 0
         })
         hashMap.put("toast", "ПТИЧКА СОЗДАНА")
-        # hashMap.put("StartProcessHashMap", "Птицы")   # не прокатило
+        # hashMap.put("StartProcessHashMap", "Птицы")   # автоматически переходим на список птиц. но механика так себе, лучше без нее
     return hashMap
 
 def customcards_on_load(hashMap, _files=None, _data=None):
+    # Обработчик загрузки экрана "Список птиц"
     """
     noClass = jclass(NO_SQL_MODULE)
     ncl = noClass(DB_BIRDS)
     """
+    # TODO - Выяснить как подключать дополнительные файлы к проекту и вынести этот шаблон в .json-файл
     birds_table = { "customcards": {
             "options":{
               "search_enabled":True,
@@ -192,6 +196,7 @@ def customcards_on_load(hashMap, _files=None, _data=None):
 
 
 def customcards_on_touch(hashMap, _files=None, _data=None):
+    # Обработчик интерфейса экрана "Список птиц"
     hashMap, birds = get_birds(hashMap)
     """
     noClass = jclass("ru.travelfood.simple_ui.NoSQL")
@@ -255,6 +260,7 @@ def detail_card_on_load(hashMap, _files=None, _data=None):
 
 
 def detail_card_touch(hashMap, _files=None, _data=None):
+    # Обработчик кнопок экрана "Детальная страница"
     # Пока не использую, т.к. меню скрыл
     if hashMap.get("listener") == 'BACK_BUTTON':
         hashMap.put("ShowScreen", "Список")
