@@ -146,16 +146,6 @@ def customcards_on_load(hashMap, _files=None, _data=None):
                         "document_type": "",
                         "mask": "",
                         "Variable": ""
-                    },
-                    {
-                        "type": "Button",
-                        "show_by_condition": "",
-                        "Value": "#f290",
-                        "TextColor": "#DB7093",
-                        "Variable": "btn_tst1",
-                        "NoRefresh": False,
-                        "document_type": "",
-                        "mask": ""
                     }
                     ]
                 }
@@ -168,7 +158,7 @@ def customcards_on_load(hashMap, _files=None, _data=None):
     """
     # TODO - разобраться почему не взлетело 
     # json.loads(ncl.encode("utf-8"))
-    for key in ncl.getallkeys():        # скорее всего поэтому. getallkeys вообще все возвращает, а не только ID
+    for key in ncl.getallkeys():            # скорее всего поэтому. getallkeys возвращает вообще всё, а не только ID
         hashMap.put("toast", str(key))
         data = ncl.get(key)
         table_new["customcards"]["cardsdata"].append({
@@ -191,7 +181,7 @@ def customcards_on_load(hashMap, _files=None, _data=None):
              })
 
     if not hashMap.containsKey("cards"):
-        hashMap.put("cards",json.dumps(birds_table,ensure_ascii=False).encode('utf8').decode())
+        hashMap.put("cards", json.dumps(birds_table, ensure_ascii=False).encode('utf8').decode())
     return hashMap
 
 
