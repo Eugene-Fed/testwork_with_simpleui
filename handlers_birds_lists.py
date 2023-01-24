@@ -12,6 +12,8 @@ from com.chaquo.python import Python
 TEXT_SIZE = 20
 DB_BIRDS = 'birds_nosql'
 NO_SQL_MODULE = 'ru.travelfood.simple_ui.NoSQL'
+IMAGE_PATH = 'images'
+
 """
 # Вариант для проброса в БД. Пока не взлетело. Доделать
 BIRDS = {
@@ -23,11 +25,11 @@ BIRDS = {
 }
 """
 BIRDS = [
-    {"id": 0, "date_time": "2023-01-15 16:24:43", "name": "Titmouse", "color": "Yellow, Black and White", "photo": None, "views": 0},
-    {"id": 1, "date_time": "2022-01-15 17:22:23", "name": "Corvus Corax", "color": "Black", "photo": None, "views": 0},
-    {"id": 2, "date_time": "2022-01-15 17:23:15", "name": "Cockatoo", "color": "White and Yellow", "photo": None, "views": 0},
-    {"id": 3, "date_time": "2022-01-15 17:24:49", "name": "Toucan", "color": "Black and White", "photo": None, "views": 0},
-    {"id": 4, "date_time": "2022-01-16 05:54:12", "name": "Blackbird", "color": "Black", "photo": None, "views": 0}
+    {"id": 0, "date_time": "2023-01-15 16:24:43", "name": "Titmouse", "color": "Yellow, Black and White", "photo": False, "views": 0},
+    {"id": 1, "date_time": "2022-01-15 17:22:23", "name": "Corvus Corax", "color": "Black", "photo": False, "views": 0},
+    {"id": 2, "date_time": "2022-01-15 17:23:15", "name": "Cockatoo", "color": "White and Yellow", "photo": False, "views": 0},
+    {"id": 3, "date_time": "2022-01-15 17:24:49", "name": "Toucan", "color": "Black and White", "photo": False, "views": 0},
+    {"id": 4, "date_time": "2022-01-16 05:54:12", "name": "Blackbird", "color": "Black", "photo": False, "views": 0}
 ]
 BIRDS_VAR = "birds"
 
@@ -173,10 +175,15 @@ def customcards_on_load(hashMap, _files=None, _data=None):
     hashMap, birds = get_birds(hashMap)
     # Первоначальный тестовый вариант с работой по списку вместо БД
     for bird in birds:
+        if not bird["photo"]:           # Если фотография не задана - преобразовать с диска в Base64
+            image_path = Path.joinpath(IMAGE_PATH, f'{bird["id"]}.jpg')
+            with open(image_path, "rb") as image_file:
+                image_base64 = base64.b64encode(image_file.read())
+
         birds_table["customcards"]["cardsdata"].append(
             {"key": str(bird["id"]),
              "name": str(bird["name"]),
-             "photo": str(bird["photo"]),
+             "photo": str(image_base64),
              "color": str(bird["color"]),
              "views": str(bird["views"])
              })
